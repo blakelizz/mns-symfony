@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OfferController!{% endblock %}
+
+{% block body %}
+{%for offer in offers%}
+<div class="offer"> 
+	<h2> {{offer.title}} </h2>
+	<p> {{offer.description}} </p>
+	<small> {{offer.createdAt|date('d/m/Y H:i')}} </small>
+	<a href="{{path('edit_offer', {'id': offer.id}) }}">Modifier </a>
+	<a href="{{path('delete_offer', {'id': offer.id}) }}">Supprimer </a>
+</div>
+{%endfor%}
+{% endblock %}
+

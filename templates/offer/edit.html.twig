@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une Offre{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Modifier une Offre</h1>
+    
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">Mettre à jour l'offre</button>
+    {{ form_end(form) }}
+    
+    <a href="{{ path('offers') }}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+{% endblock %}

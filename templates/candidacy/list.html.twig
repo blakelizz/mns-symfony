@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CandidacyController!{% endblock %}
+
+{% block body %}
+    {% for candidacy in candidacies %}
+        <div class="offer">
+            <h2>{{ candidacy.offer.title }}</h2>
+            <p>{{ candidacy.message }}</p>
+            <small>{{ candidacy.createdAt|date('d/m/Y H:i') }}</small>
+            <a href="{{ path('edit_candidacy', {'id': candidacy.id}) }}">Modifier</a>
+            <a href="{{ path('delete_candidacy', {'id': candidacy.id}) }}">Supprimer</a>
+        </div>
+    {% endfor %}
+{% endblock %}

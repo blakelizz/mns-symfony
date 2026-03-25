@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Offres{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Liste des Offres</h1>
+    
+    {% if offers is empty %}
+        <p>Aucune offre disponible.</p>
+    {% else %}
+        {% for offer in offers %}
+            <div class="offer" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 15px;">
+                <h2>{{ offer.title }}</h2>
+                <p>{{ offer.description }}</p>
+                <small>Créée le: {{ offer.createdAt|date('d/m/Y H:i') }}</small>
+                {% if offer.updatedAt %}
+                    <small>Modifiée le: {{ offer.updatedAt|date('d/m/Y H:i') }}</small>
+                {% endif %}
+                <div style="margin-top: 10px;">
+                    <a href="{{ path('editOffer', {'id': offer.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('deleteOffer', {'id': offer.id}) }}" class="btn btn-danger">Supprimer</a>
+                    <a href="{{ path('add_candidacy', {'id': offer.id}) }}" class="btn btn-primary">Postuler</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
